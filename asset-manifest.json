@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/Wave.js/static/js/main.62cfc900.chunk.js",
+    "main.js.map": "/Wave.js/static/js/main.62cfc900.chunk.js.map",
+    "runtime-main.js": "/Wave.js/static/js/runtime-main.98ab831a.js",
+    "runtime-main.js.map": "/Wave.js/static/js/runtime-main.98ab831a.js.map",
+    "static/js/2.85adfdbc.chunk.js": "/Wave.js/static/js/2.85adfdbc.chunk.js",
+    "static/js/2.85adfdbc.chunk.js.map": "/Wave.js/static/js/2.85adfdbc.chunk.js.map",
+    "index.html": "/Wave.js/index.html",
+    "precache-manifest.e2c1931d56ac0a76016835e15a17df07.js": "/Wave.js/precache-manifest.e2c1931d56ac0a76016835e15a17df07.js",
+    "service-worker.js": "/Wave.js/service-worker.js",
+    "static/js/2.85adfdbc.chunk.js.LICENSE.txt": "/Wave.js/static/js/2.85adfdbc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98ab831a.js",
+    "static/js/2.85adfdbc.chunk.js",
+    "static/js/main.62cfc900.chunk.js"
+  ]
+}
