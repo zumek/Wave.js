@@ -1,4 +1,17 @@
-export default function fromElement(element_id, canvas_id, options) {
+let id = 1;
+
+export default function fromElement(element, canvas, options) {
+    const element_id = `elm_${id++}`;
+    const canvas_id = `can_${id++}`;
+
+    if (!element.dataset['waveid']) {
+        element.dataset['waveid'] = element_id;
+        canvas.dataset['waveid'] = canvas_id;
+    } else {
+        element_id = element.dataset['waveid'];
+        canvas_id = canvas.dataset['waveid'];
+    }
+    
     const globalAccessKey = [options.globalAccessKey || '$wave'];
     const initGlobalObject = (elementId) => {
         window[globalAccessKey] = window[globalAccessKey] || {};
@@ -20,7 +33,7 @@ export default function fromElement(element_id, canvas_id, options) {
     };
 
     const waveContext = this;
-    let element = document.getElementById(element_id);
+    // let element = document.getElementById(element_id);
     if (!element) return
     element.crossOrigin = "anonymous";
 
@@ -39,10 +52,10 @@ export default function fromElement(element_id, canvas_id, options) {
 
         const currentCount = this.activeElements[element_id].count
 
-        const audioCtx = setGlobal(element.id, 'audioCtx', new AudioContext());
-        const analyser = setGlobal(element.id, 'analyser', audioCtx.createAnalyser());
+        const audioCtx = setGlobal(element_id, 'audioCtx', new AudioContext());
+        const analyser = setGlobal(element_id, 'analyser', audioCtx.createAnalyser());
 
-        let source = getGlobal(element.id, 'source');
+        let source = getGlobal(element_id, 'source');
         if (source) {
             if (source.mediaElement !== element) {
                 source = audioCtx.createMediaElementSource(element);
@@ -50,7 +63,7 @@ export default function fromElement(element_id, canvas_id, options) {
         } else {
             source = audioCtx.createMediaElementSource(element);
         }
-        setGlobal(element.id, 'source', source);
+        setGlobal(element_id, 'source', source);
 
         //beep test for ios
         const oscillator = audioCtx.createOscillator();
@@ -74,7 +87,7 @@ export default function fromElement(element_id, canvas_id, options) {
             }
 
             //if the element or canvas go out of scope, stop animation
-            if (!document.getElementById(element_id) || !document.getElementById(canvas_id))
+            if (!element || canvas)
                 return
 
             requestAnimationFrame(renderFrame);
